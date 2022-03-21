@@ -201,6 +201,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_stakeholder",
+						"type": "address"
+					}
+				],
+				"name": "calculateReward",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "_stake",
 						"type": "uint256"
@@ -245,6 +264,13 @@
 						"type": "bool"
 					}
 				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "distributeRewards",
+				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -358,6 +384,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_stakeholder",
+						"type": "address"
+					}
+				],
+				"name": "rewardOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "buyPrice",
 						"type": "uint256"
@@ -395,6 +440,19 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalRewards",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -475,6 +533,13 @@
 					}
 				],
 				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawReward",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -604,11 +669,11 @@
 			]
 		},
 		"contracts/ZenyaStake.sol": {
-			"keccak256": "0x1c850dd4258038b15992ef547d8dc987cc8f15fe0625d7d7ed953d3133a21023",
+			"keccak256": "0xd6a2a92cae42c701a93db3e3ff9b3cd01434a2e26c3ce68d9de1e7d1b39681f9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5dc652468bb79f68d5858bc154ae3a81b368ec3fad882b0acd4011851bec1575",
-				"dweb:/ipfs/QmWTaFNDQYyRoNKMLCRtxfgAunHkH3bg3ZyyvVCPX4j4wM"
+				"bzz-raw://03d0c76bc5be860ab1ebe36515abef805672c8a2a7165b1b3678679816e3f746",
+				"dweb:/ipfs/QmZiDiv669gvBnoxGnYkLbPqf3Cz5F2pq2aE4t46i245yc"
 			]
 		}
 	},

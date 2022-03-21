@@ -15,6 +15,8 @@ contract ZenyaStake is ERC20, Ownable  {
     mapping(address => uint256) internal stakes;
     //mapping holds the address of stakers in an array
     address[] internal stakeholders;
+    //The accumulated rewards for each stakeholder.
+    mapping(address => uint256) internal rewards;
 
     constructor() ERC20("ZenyaStake", "ZNYS") {
         _mint(msg.sender, 1000 * 10 ** decimals());
@@ -82,5 +84,44 @@ contract ZenyaStake is ERC20, Ownable  {
         stakes[msg.sender] = stakes[msg.sender] - _stake;
         if(stakes[msg.sender] == 0) removeStakeholder(msg.sender);
         _mint(msg.sender, _stake);
+    }
+
+    //REWWARDS
+    //REWWARDS
+    //REWWARDS
+    
+    //A method to allow a stakeholder to check his rewards.
+    function rewardOf(address _stakeholder) public view returns(uint256) {
+        return rewards[_stakeholder];
+    }
+
+    //A method to the aggregated rewards from all stakeholders.
+    function totalRewards() public view returns(uint256){
+        uint256 _totalRewards = 0;
+        for (uint256 s = 0; s < stakeholders.length; s += 1){
+            _totalRewards = _totalRewards + rewards[stakeholders[s]];
+        }
+        return _totalRewards;
+    }
+
+    //A simple method that calculates the rewards for each stakeholder.
+    function calculateReward(address _stakeholder) public view returns(uint256){
+        return stakes[_stakeholder] / 100;
+    }
+
+    //A method to distribute rewards to all stakeholders.
+    function distributeRewards() public  {
+        for (uint256 s = 0; s < stakeholders.length; s += 1){
+            address stakeholder = stakeholders[s];
+            uint256 reward = calculateReward(stakeholder);
+            rewards[stakeholder] = rewards[stakeholder] + reward;
+        }
+    }
+
+    //A method to allow a stakeholder to withdraw his rewards.
+    function withdrawReward() public {
+        uint256 reward = rewards[msg.sender];
+        rewards[msg.sender] = 0;
+        _mint(msg.sender, reward);
     }
 }
