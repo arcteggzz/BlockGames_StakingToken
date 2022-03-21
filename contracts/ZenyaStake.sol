@@ -17,6 +17,8 @@ contract ZenyaStake is ERC20, Ownable  {
     address[] internal stakeholders;
     //The accumulated rewards for each stakeholder.
     mapping(address => uint256) internal rewards;
+    //initialize a tracker for period that stakes are locked
+    uint256 deadline;
 
     constructor() ERC20("ZenyaStake", "ZNYS") {
         _mint(msg.sender, 1000 * 10 ** decimals());
@@ -77,6 +79,8 @@ contract ZenyaStake is ERC20, Ownable  {
         _burn(msg.sender, _stake);
         if(stakes[msg.sender] == 0) addStakeholder(msg.sender);
         stakes[msg.sender] = stakes[msg.sender] + _stake;
+        // start the 7 days timer. Note 7days is hard coded here
+        deadline = block.timestamp + (7 * 1 days);
     }
 
     //A method for a stakeholder to remove a stake.
@@ -95,7 +99,7 @@ contract ZenyaStake is ERC20, Ownable  {
         return rewards[_stakeholder];
     }
 
-    //A method to the aggregated rewards from all stakeholders.
+    //A method to check the aggregated rewards from all stakeholders.
     function totalRewards() public view returns(uint256){
         uint256 _totalRewards = 0;
         for (uint256 s = 0; s < stakeholders.length; s += 1){
@@ -120,6 +124,8 @@ contract ZenyaStake is ERC20, Ownable  {
 
     //A method to allow a stakeholder to withdraw his rewards.
     function withdrawReward() public {
+        //require statement here
+        require(block.timestamp >= deadline, "Your 7 days deadline is not complete");
         uint256 reward = rewards[msg.sender];
         rewards[msg.sender] = 0;
         _mint(msg.sender, reward);
