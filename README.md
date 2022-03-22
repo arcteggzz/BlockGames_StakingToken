@@ -3,7 +3,7 @@ A solidity project that aims to create a token and interact with a UI in web3,js
 
 
 # LINK TO HOSTED UI
-
+https://superlative-lebkuchen-5d11ff.netlify.app/
 
 # Link to Verified Contract 
 https://rinkeby.etherscan.io/address/0x7cfbae35e66bc635ba410e027a657cc426cab58c#code
