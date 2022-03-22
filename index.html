@@ -16,40 +16,50 @@
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
   </head>
   <body>
-    <h1>Moralis Hello World!</h1>
-
-    <button id="btn-login">Moralis Metamask Login</button>
-    <button id="btn-logout">Logout</button>
-    <br />
-
-    <h1>Number of Tokens staked</h1>
-
-    <div class="card">
-      <button id="btn-stake">Stake Tokens</button>
-      <input
-        type="number"
-        id="tentacles"
-        name="tentacles"
-        min="0"
-        max="1000000"
-        placeholder="tokens to Stake"
-      />
-    </div>
-    <div class="card">
-      <button id="btn-viewBalance">View Token Balance</button>
-      <h3>tokensBalance</h3>
-    </div>
-    <div class="card">
-      <button id="btn-transferTokens">Transfer Tokens</button>
-      <input
-        type="number"
-        id="tentacles"
-        name="tentacles"
-        min="0"
-        max="1000000"
-        placeholder="tokens to Transfer"
-      />
-    </div>
+    <header>
+      <h1>BlockGames - Zuri</h1>
+      <h2>Introduction to BlockChain technology and Solidity</h2>
+    </header>
+    <section class="authenticate">
+      <button id="btn-login">Connect Wallet +</button>
+      <button id="btn-logout">Logout</button>
+    </section>
+    <section class="interaction">
+      <div class="card">
+        <!--card 01-->
+        <button id="btn-get-total-stake">View Total Stake</button>
+        <h4>00</h4>
+      </div>
+      <div class="card">
+        <!--card 02-->
+        <button id="btn-stake">Stake Tokens</button>
+        <input
+          type="number"
+          id="tentacles"
+          name="tentacles"
+          min="0"
+          max="1000000"
+          placeholder="amount to Stake"
+        />
+      </div>
+      <div class="card">
+        <!--card 03-->
+        <button id="btn-get-total-stake">View Token Balance</button>
+        <h4>00</h4>
+      </div>
+      <div class="card">
+        <!--card 04-->
+        <button id="btn-transferTokens">Transfer Tokens</button>
+        <input
+          type="number"
+          id="tentacles"
+          name="tentacles"
+          min="0"
+          max="1000000"
+          placeholder="amount to Transfer"
+        />
+      </div>
+    </section>
   </body>
   <script type="text/javascript" src="./main.js"></script>
 </html>
