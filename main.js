@@ -27,6 +27,23 @@ async function logOut() {
 
 
 
+async function viewTotalTokensStaked(){
+    const amountToStake = document.querySelector(".card input")
+    if (amountToStake.value === 0){
+        return
+    } else {
+        let options = {
+            contractAddress: "0x7CfBAe35E66bc635Ba410E027a657cc426Cab58c",
+            functionName: "createStake",
+            abi:[{"inputs":[{"internalType":"uint256","name":"_stake","type":"uint256"}],"name":"createStake","outputs":[],"stateMutability":"nonpayable","type":"function"}],
+            params:{
+                _stake: amountToStake
+            }
+        };
+        await Moralis.executeFunction(options)
+    }    
+}
+
 async function StakeTokens(){
     const amountToStake = document.querySelector(".card input")
     if (amountToStake.value === 0){
@@ -46,8 +63,11 @@ async function StakeTokens(){
 
 document.getElementById("btn-login").onclick = login;
 document.getElementById("btn-logout").onclick = logOut;
+
+document.getElementById("btn-get-total-stake").onclick = viewTotalTokensStaked;
 document.getElementById("btn-stake").onclick = StakeTokens;
+document.getElementById("btn-get-total-balance").onclick = viewTotalTokensBalace;
+document.getElementById("btn-transferTokens").onclick = transferTokens;
 
 
 
-console.clear()
